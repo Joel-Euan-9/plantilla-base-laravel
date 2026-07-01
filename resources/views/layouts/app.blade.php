@@ -21,7 +21,7 @@
         <x-banner />
 
         <!-- Envoltorio Principal ERP (H-Screen, Flex) con Estado Alpine para Sidebar -->
-        <div x-data="{ sidebarOpen: false }" class="h-screen flex bg-slate-50 overflow-hidden w-full relative">
+        <div x-data="{ sidebarOpen: false, sidebarExpanded: true }" class="h-screen flex bg-slate-50 overflow-hidden w-full relative">
             
             <!-- Sidebar Navigation (Delegado a Livewire) -->
             @livewire('navigation-menu')

@@ -36,6 +36,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_active',
+        'favorited_modules',
     ];
 
     /**
@@ -69,6 +70,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'favorited_modules' => 'array',
         ];
     }
 }
