@@ -5,7 +5,6 @@
         @endphp
         <div class="group relative flex flex-col items-center justify-center p-4 aspect-square rounded-2xl hover:bg-slate-200/50 transition-colors cursor-pointer text-center">
             
-            <!-- Favorite Star -->
             <button wire:click.stop="toggleFavorite('{{ $key }}')" 
                     class="absolute top-2 right-2 p-1.5 rounded-full transition-all duration-300 z-10 {{ $isFavorite ? 'text-yellow-400 opacity-100 scale-110 hover:bg-yellow-50' : 'text-slate-300 opacity-0 group-hover:opacity-100 hover:text-yellow-400 hover:bg-white hover:scale-110 shadow-sm group-hover:shadow' }}"
                     title="{{ $isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos' }}">
@@ -14,15 +13,17 @@
                 </svg>
             </button>
 
-            <!-- App Icon (Odoo Style) -->
-            <a href="{{ $module['route'] }}" class="flex flex-col items-center justify-center w-full h-full relative">
+            <button type="button" 
+                    wire:click="$dispatch('open-module', { moduleName: '{{ $module['name'] }}', componentName: '{{ $key }}' })" 
+                    class="flex flex-col items-center justify-center w-full h-full relative focus:outline-none">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 {{ $module['color'] }} rounded-[20px] sm:rounded-[24px] shadow-sm flex items-center justify-center text-white mb-3 group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
                     <div class="w-8 h-8 sm:w-10 sm:h-10">
                         {!! $module['icon'] !!}
                     </div>
                 </div>
                 <span class="text-xs font-medium text-slate-700 max-w-full leading-tight truncate px-1 group-hover:text-slate-900">{{ $module['name'] }}</span>
-            </a>
+            </button>
+            
         </div>
     @endforeach
 </div>
